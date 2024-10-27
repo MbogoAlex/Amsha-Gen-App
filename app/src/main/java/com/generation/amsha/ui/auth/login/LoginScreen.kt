@@ -1,4 +1,4 @@
-package com.generation.amsha.ui.auth.registration
+package com.generation.amsha.ui.auth.login
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -13,9 +13,14 @@ import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,19 +38,19 @@ import com.generation.amsha.utils.screenHeight
 import com.generation.amsha.utils.screenWidth
 
 @Composable
-fun RegistrationScreenComposable(
+fun LoginScreenComposable(
     modifier: Modifier = Modifier
 ) {
     Box(
         modifier = Modifier
             .safeDrawingPadding()
     ) {
-        RegistrationScreen()
+        LoginScreen()
     }
 }
 
 @Composable
-fun RegistrationScreen(
+fun LoginScreen(
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -57,33 +62,31 @@ fun RegistrationScreen(
             )
             .verticalScroll(rememberScrollState())
     ) {
-        Text(
-            text = "Join the Amsha Generation",
-            fontWeight = FontWeight.Bold,
-            fontSize = screenFontSize(x = 20.0).sp,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            IconButton(onClick = { /*TODO*/ }) {
+                Icon(
+                    imageVector = Icons.Default.ArrowBack,
+                    contentDescription = "Previous screen"
+                )
+            }
+            Text(
+                text = "Login",
+                fontWeight = FontWeight.Bold,
+                fontSize = screenFontSize(x = 20.0).sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+//                    .align(Alignment.CenterHorizontally)
+            )
+        }
         Spacer(modifier = Modifier.height(screenHeight(x = 16.0)))
         Text(
-            text = "Join us today amd start saving!",
+            text = "Enter your details to log in.",
             fontSize = screenFontSize(x = 14.0).sp,
             textAlign = TextAlign.Center,
             modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-        )
-        Spacer(modifier = Modifier.height(screenHeight(x = 16.0)))
-        TextFieldComposable(
-            label = "Full name",
-            value = "",
-            keyboardOptions = KeyboardOptions.Default.copy(
-                imeAction = ImeAction.Next,
-                keyboardType = KeyboardType.Text
-            ),
-            onValueChange = {},
-            modifier = Modifier
-                .fillMaxWidth()
+//                .align(Alignment.CenterHorizontally)
         )
         Spacer(modifier = Modifier.height(screenHeight(x = 16.0)))
         TextFieldComposable(
@@ -92,18 +95,6 @@ fun RegistrationScreen(
             keyboardOptions = KeyboardOptions.Default.copy(
                 imeAction = ImeAction.Next,
                 keyboardType = KeyboardType.Phone
-            ),
-            onValueChange = {},
-            modifier = Modifier
-                .fillMaxWidth()
-        )
-        Spacer(modifier = Modifier.height(screenHeight(x = 16.0)))
-        TextFieldComposable(
-            label = "Email",
-            value = "",
-            keyboardOptions = KeyboardOptions.Default.copy(
-                imeAction = ImeAction.Next,
-                keyboardType = KeyboardType.Email
             ),
             onValueChange = {},
             modifier = Modifier
@@ -122,13 +113,17 @@ fun RegistrationScreen(
                 .fillMaxWidth()
         )
         Spacer(modifier = Modifier.height(screenHeight(x = 16.0)))
+        TextButton(onClick = { /*TODO*/ }) {
+            Text(text = "Forgot password?")
+        }
+        Spacer(modifier = Modifier.height(screenHeight(x = 16.0)))
         Row(
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Text(text = "Already have an account? ")
+            Text(text = "Don't have an account? ")
             Text(
                 color = MaterialTheme.colorScheme.surfaceTint,
-                text = "Sign in",
+                text = "Sign up",
                 modifier = Modifier
                     .clickable {  }
             )
@@ -139,15 +134,15 @@ fun RegistrationScreen(
             modifier = Modifier
                 .fillMaxWidth()
         ) {
-            Text(text = "Sign up")
+            Text(text = "Sign in")
         }
     }
 }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun RegistrationScreenPreview() {
+fun LoginScreenPreview() {
     AmshaTheme {
-        RegistrationScreen()
+        LoginScreen()
     }
 }
