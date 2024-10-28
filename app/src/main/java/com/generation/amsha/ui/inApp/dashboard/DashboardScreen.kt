@@ -48,6 +48,7 @@ import androidx.compose.ui.unit.sp
 import com.generation.amsha.R
 import com.generation.amsha.data.transaction.UserTransaction
 import com.generation.amsha.ui.inApp.chart.BarChart
+import com.generation.amsha.ui.reuseCompose.SavingsPlanTile
 import com.generation.amsha.ui.theme.AmshaTheme
 import com.generation.amsha.utils.dateFormatter
 import com.generation.amsha.utils.formatIsoDateTime2
@@ -302,45 +303,6 @@ fun DashboardScreen(
         SavingsPlanTile()
         Spacer(modifier = Modifier.height(screenHeight(x = 8.0)))
         SavingsPlanTile()
-    }
-}
-
-@Composable
-fun SavingsPlanTile(
-    modifier: Modifier = Modifier
-) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Box(
-            modifier = Modifier
-                .weight(1f)
-        ) {
-            Column {
-                Text(
-                    text = "New Laptop",
-                    fontSize = screenFontSize(x = 14.0).sp,
-                    fontWeight = FontWeight.Bold
-                )
-                Spacer(modifier = Modifier.height(screenHeight(x = 4.0)))
-                Text(
-                    text = "${formatMoneyValue(55.0)} / ${formatMoneyValue(100.0)}",
-                    fontSize = screenFontSize(x = 14.0).sp,
-                    fontWeight = FontWeight.Thin
-                )
-            }
-        }
-        Box(
-            modifier = Modifier
-                .weight(1f)
-        ) {
-            LinearProgressIndicator(
-                progress = { 55f / 100f },
-                modifier = Modifier
-                    .height(screenHeight(x = 6.0))
-                    .clip(CircleShape)
-            )
-        }
     }
 }
 
