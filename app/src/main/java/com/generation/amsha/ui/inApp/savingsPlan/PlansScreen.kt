@@ -192,7 +192,10 @@ fun PlansScreen(
                 Row(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(text = "Add plan")
+                    Text(
+                        text = "Add plan",
+                        fontSize = screenFontSize(x = 14.0).sp
+                    )
                     Icon(imageVector = Icons.Default.Add, contentDescription = "Add plan")
                 }
             }
